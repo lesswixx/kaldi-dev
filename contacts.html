@@ -80,46 +80,38 @@
 
 
 <script type="text/javascript">
-(function(k,o,t,e,l){
-  l=document.createElement("script");
-  l.type="text/javascript";
-  l.src="https://bookonline24.ru/widget.js";
-  l.async=!0;
-  l.onload=l.onreadystatechange=function(){e=this.readyState;!o&&(!e||e==="complete")&&(o=1)&&k();};
-  t=document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(l,t);
+(function(start){
+  var s=document.createElement("script");
+  s.src="https://bookonline24.ru/widget.js"; s.async=true;
+  s.onload=s.onreadystatechange=function(){var st=this.readyState; if(!st||st==="complete") start();};
+  document.head.appendChild(s);
 })(function(){
-  // Ensure containers without touching original HTML
-  function ensureContainer(id, picker){
-    var el = document.getElementById(id);
-    if (!el){
-      var parent = (typeof picker==='function' ? picker() : null) || document.body;
-      el = document.createElement('div');
-      el.id = id;
-      el.style.minHeight = '280px';
-      parent && parent.appendChild(el);
-    }
-    return el;
+  var HOTEL_ID="642da836-2765-4865-948f-35039fe2e065";
+  var added=false;
+  function addAll(){ if(added) return; added=true; try{ HotelWidget.add({ type: "availabilityCalendar", months: 1, appearance: { container: "kontur-calendar" } }); }catch(e){ console.error("HotelWidget addAll failed", e); } }
+  function init(v){
+    try{
+      HotelWidget.init({
+        hotelId: HOTEL_ID,
+        version: v,
+        hooks: {
+          onInit: function(){ console.log("HotelWidget onInit v"+v); addAll(); },
+          onBooking: function(v){ console.log("HotelWidget onBooking", v); },
+          onError: function(e){ 
+            console.error("HotelWidget onError v"+v, e); 
+            var msg=(e && (e.message||e))||"";
+            if(v!=="1" && String(msg).toLowerCase().includes("not available")){ 
+              console.warn("Retrying HotelWidget with version=1 ..."); 
+              init("1"); 
+            }
+          }
+        }
+      });
+    }catch(err){ console.error("HotelWidget init error v"+v, err); }
   }
-  // Smoother scroll helper
-  function scrollToEl(el){ try{ el && el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(_){
-    if(el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 24);
-  }}
-
-  HotelWidget.init({
-    hotelId: "642da836-2765-4865-948f-35039fe2e065",
-    version: "2",
-    hooks: {
-      onError: function(e){ console.error("HotelWidget onError", e); },
-      onInit: function(){ console.log("HotelWidget onInit"); },
-      onBooking: function(v){ console.log("HotelWidget onBooking", v); }
-    }
-  });
-
-  var grid = document.querySelector('.grid-3') || document.querySelector('.section') || document.body;
-  var host = ensureContainer('kontur-calendar', function(){ return grid; });
-  HotelWidget.add({ type: "availabilityCalendar", months: 1, appearance: { container: "kontur-calendar" } });
-
+  init("2");
 });
 </script>
+
 </body>
 </html>
