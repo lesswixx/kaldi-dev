@@ -79,30 +79,39 @@
 <script src="scripts/main.js"></script>
 
 
+
 <script type="text/javascript">
-(function(start){
+(function(start){ 
   var s=document.createElement("script");
   s.src="https://bookonline24.ru/widget.js"; s.async=true;
   s.onload=s.onreadystatechange=function(){var st=this.readyState; if(!st||st==="complete") start();};
   document.head.appendChild(s);
-})(function(){
-  var HOTEL_ID="642da836-2765-4865-948f-35039fe2e065";
-  var added=false;
-  function addAll(){ if(added) return; added=true; try{ HotelWidget.add({ type: "availabilityCalendar", months: 1, appearance: { container: "kontur-calendar" } }); }catch(e){ console.error("HotelWidget addAll failed", e); } }
-  function init(v){
-    try{
+})(function(){ 
+  // --- ensure containers exist BEFORE widget init ---
+  (function(){ 
+(function(){ 
+  var id="kontur-calendar";
+  if(document.getElementById(id)) return;
+  var el=document.createElement("div"); el.id=id; el.style.minHeight="280px"; el.style.margin="16px 0";
+  var anchors=[".contacts","main .grid","main",".content","body"]; var parent=null;
+  for(var i=0;i<anchors.length;i++){ var cand=document.querySelector(anchors[i]); if(cand){ parent=cand; break; } }
+  (parent||document.body).appendChild(el);
+})(); })();
+  function addAll(){ try{ HotelWidget.add({ type: "availabilityCalendar", months: 1, appearance: { container: "kontur-calendar" } }); }catch(e){ console.error("HotelWidget addAll failed", e); } }
+  function init(v){ 
+    try{ 
       HotelWidget.init({
-        hotelId: HOTEL_ID,
+        hotelId: "642da836-2765-4865-948f-35039fe2e065",
         version: v,
         hooks: {
           onInit: function(){ console.log("HotelWidget onInit v"+v); addAll(); },
           onBooking: function(v){ console.log("HotelWidget onBooking", v); },
           onError: function(e){ 
-            console.error("HotelWidget onError v"+v, e); 
+            console.error("HotelWidget onError v"+v, e);
             var msg=(e && (e.message||e))||"";
             if(v!=="1" && String(msg).toLowerCase().includes("not available")){ 
               console.warn("Retrying HotelWidget with version=1 ..."); 
-              init("1"); 
+              init("1");
             }
           }
         }
