@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Номера и размещение — Калды</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+<header class="header">
+  <a class="brand" href="index.html">
+    <img src="assets/logo.png" alt="Калды — логотип">
+    <div class="title"><span class="ru">Калды</span><span class="subtitle">База отдыха</span></div>
+  </a>
+
+  <!-- КНОПКА-БУРГЕР -->
+  <button class="burger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav">
+    <a href="rooms.html">Домики</a>
+    <a href="services.html">Услуги</a>
+    <a href="gallery.html">Галерея</a>
+    <a href="index.html#about">О нас</a>
+    <a href="contacts.html">Контакты</a>
+    <a class="btn" href="#" onclick="bookingStub(event)">Забронировать</a>
+  </nav>
+</header>
+
+    <section class="section">
+      <div class="rooms-head">
+        <h2>Номера и размещение</h2>
+        <div class="sort">
+          <label>Сортировать по цене:</label>
+          <button class="sort-btn" data-sort="asc">по возрастанию</button>
+          <button class="sort-btn" data-sort="desc">по убыванию</button>
+        </div>
+      </div>
+
+      <!-- Подхватываем список из JSON -->
+      <div id="rooms-list" class="grid-3" data-rooms-src="assets/data/rooms.json"></div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div>© 2025 «Калды». База отдыха у озера.</div>
+        <div class="badge-pill">Тёплый отдых у воды</div>
+      </div>
+    </div>
+  </footer>
+<script src="scripts/main.js"></script>
+
+
+  
+
+<script type="text/javascript">
+(function(k,o,t,e,l){
+  l=document.createElement("script");
+  l.type="text/javascript";
+  l.src="https://bookonline24.ru/widget.js";
+  l.async=!0;
+  l.onload=l.onreadystatechange=function(){e=this.readyState;!o&&(!e||e==="complete")&&(o=1)&&k();};
+  t=document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(l,t);
+})(function(){
+  // Ensure containers without touching original HTML
+  function ensureContainer(id, picker){
+    var el = document.getElementById(id);
+    if (!el){
+      var parent = (typeof picker==='function' ? picker() : null) || document.body;
+      el = document.createElement('div');
+      el.id = id;
+      el.style.minHeight = '280px';
+      parent && parent.appendChild(el);
+    }
+    return el;
+  }
+  // Smoother scroll helper
+  function scrollToEl(el){ try{ el && el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(_){
+    if(el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 24);
+  }}
+
+  HotelWidget.init({
+    hotelId: "642da836-2765-4865-948f-35039fe2e065",
+    version: "2",
+    hooks: {
+      onError: function(e){ console.error("HotelWidget onError", e); },
+      onInit: function(){ console.log("HotelWidget onInit"); },
+      onBooking: function(v){ console.log("HotelWidget onBooking", v); }
+    }
+  });
+
+  var roomsList = document.getElementById('rooms-list');
+  var parent = roomsList ? roomsList.parentElement : document.body;
+  var host = ensureContainer('kontur-rooms', function(){ return parent; });
+  HotelWidget.add({ type: "roomsList", appearance: { container: "kontur-rooms" } });
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Главная — Калды</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+<header class="header">
+  <a class="brand" href="index.html">
+    <img src="assets/logo.png" alt="Калды — логотип">
+    <div class="title"><span class="ru">Калды</span><span class="subtitle">База отдыха</span></div>
+  </a>
+
+  <!-- КНОПКА-БУРГЕР -->
+  <button class="burger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav">
+    <a href="rooms.html">Домики</a>
+    <a href="services.html">Услуги</a>
+    <a href="gallery.html">Галерея</a>
+    <a href="index.html#about">О нас</a>
+    <a href="contacts.html">Контакты</a>
+    <a class="btn" href="#" onclick="bookingStub(event)">Забронировать</a>
+  </nav>
+</header>
+
+<!-- ПОДЛОЖКА ДЛЯ ЗАТЕМНЕНИЯ ФОНА -->
+<div class="nav-mask"></div>
+
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="badge"><span class="dot"></span> Лето у озера ждёт вас</span>
+      <h1>Тёплый отдых у воды<br>с уютными домиками</h1>
+      <p>Семейные выходные, корпоративы или романтические вечера — у нас есть домики на любой вкус, чистый пляж и активный досуг.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#" onclick="bookingStub(event)">Проверить даты</a>
+        <a class="brand" href="gallery.html" style="gap:8px;">
+          <img src="assets/logo.png" alt="" style="width:36px;height:36px;border-radius:8px;">
+          <span style="font-weight:700">3D-тур (скоро)</span>
+        </a>
+      </div>
+    </div>
+
+<aside class="hero-card" aria-label="Быстрое бронирование" style="position:relative;">
+
+  <!-- Виджет погоды — ДОЛЖЕН быть внутри hero-card -->
+  <div id="weather"
+       class="weather"
+       data-fallback-lat="55.66"
+       data-fallback-lon="61.30">
+    <div class="w-row">
+      <strong id="wTemp">—°</strong>
+      <div class="w-meta">
+        <div id="wCond">Погода</div>
+        <small id="wCity">Загрузка…</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div><label>Заезд</label><div class="field">12.08.2025</div></div>
+    <div><label>Выезд</label><div class="field">15.08.2025</div></div>
+  </div>
+  <div class="row">
+    <div><label>Гости</label><div class="field">2 взрослых · 1 ребёнок</div></div>
+    <div><label>Тип домика</label><div class="field">Стандарт у озера</div></div>
+  </div>
+  <a class="btn" href="#" onclick="bookingStub(event)">Забронировать</a>
+  <a class="btn" href="contacts.html" style="background:#4CB7C5">Связаться с нами</a>
+</aside>
+
+  </div>
+  <div class="wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+      <path d="M0,40 C260,100 420,10 720,40 C1020,70 1180,10 1440,40 L1440,90 L0,90 Z" fill="#4CB7C5" opacity=".35"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- О нас -->
+<section id="about" class="section card">
+  <h2>О нас</h2>
+  <p>«Калды» — семейная база отдыха у озера. Мы любим тёплые вечера, запах хвои и чистую воду. Основаны в 2010 году, развиваем территорию и сервис каждый сезон.</p>
+  <div class="about-photos">
+    <img src="assets/territory/terr-1.jpg" alt="Территория — вид 1">
+    <img src="assets/territory/terr-2.jpg" alt="Территория — вид 2">
+    <img src="assets/territory/terr-3.jpg" alt="Территория — вид 3">
+  </div>
+</section>
+
+<!-- Преимущества -->
+<section class="section grid-3">
+  <article class="card feature-card" data-modal-open="feat-water">
+    <span class="badge-pill">У воды</span>
+    <h3>Песчаный пляж и чистое озеро</h3>
+    <p>Шезлонги, прокат сапов и безопасная зона для детей. Расслабьтесь под тёплым солнцем.</p>
+  </article>
+  <article class="card feature-card" data-modal-open="feat-houses">
+    <span class="badge-pill">Домики</span>
+    <h3>Уют и комфорт</h3>
+    <p>От компактных домиков до просторных коттеджей — кондиционер, терраса, мангал.</p>
+  </article>
+  <article class="card feature-card" data-modal-open="feat-activities">
+    <span class="badge-pill">Активности</span>
+    <h3>Досуг на любой вкус</h3>
+    <p>Баня, спортплощадки, аренда велосипедов и вечерние костры у воды.</p>
+  </article>
+</section>
+
+<section class="section">
+  <a class="btn" href="rooms.html">Смотреть домики и цены</a>
+</section>
+
+  </div>
+
+<!-- Модалки преимуществ -->
+<div class="modal" id="feat-water" aria-hidden="true">
+  <div class="modal__dialog">
+    <button class="modal__close" data-modal-close aria-label="Закрыть">×</button>
+    <h3>Пляж и озеро</h3>
+    <p>Чистая вода, пологий вход — отлично для детей.</p>
+    <div class="modal__slider" data-slider>
+      <div class="modal__slides">
+        <div class="modal__slide"><img src="assets/territory/terr-1.jpg" alt=""></div>
+        <div class="modal__slide"><img src="assets/territory/terr-2.jpg" alt=""></div>
+        <div class="modal__slide"><img src="assets/territory/terr-3.jpg" alt=""></div>
+      </div>
+      <button class="modal__prev">‹</button>
+      <button class="modal__next">›</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="feat-houses" aria-hidden="true">
+  <div class="modal__dialog">
+    <button class="modal__close" data-modal-close aria-label="Закрыть">×</button>
+    <h3>Домики</h3>
+    <p>От стандартных до семейных коттеджей — все с террасами и мангалом.</p>
+    <div class="modal__slider" data-slider>
+      <div class="modal__slides">
+        <div class="modal__slide"><img src="assets/rooms/standard-1.jpg" alt=""></div>
+        <div class="modal__slide"><img src="assets/rooms/cottage-1.jpg" alt=""></div>
+        <div class="modal__slide"><img src="assets/rooms/forest-1.jpg" alt=""></div>
+      </div>
+      <button class="modal__prev">‹</button>
+      <button class="modal__next">›</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="feat-activities" aria-hidden="true">
+  <div class="modal__dialog">
+    <button class="modal__close" data-modal-close aria-label="Закрыть">×</button>
+    <h3>Активности</h3>
+    <p>Баня, велосипеды, площадки и вечерние костры.</p>
+    <div class="modal__slider" data-slider>
+      <div class="modal__slides">
+        <div class="modal__slide"><img src="assets/activities/act-1.jpg" alt=""></div>
+        <div class="modal__slide"><img src="assets/activities/act-2.jpg" alt=""></div>
+      </div>
+      <button class="modal__prev">‹</button>
+      <button class="modal__next">›</button>
+    </div>
+  </div>
+</div>
+
+<!-- Лайтбокс «как в деталке» -->
+<div id="lightbox" class="lightbox" style="display:none;">
+  <button class="lightbox-close" aria-label="Закрыть">×</button>
+  <button class="lightbox-prev" aria-label="Предыдущее фото">‹</button>
+  <img src="" alt="" class="lightbox-img">
+  <button class="lightbox-next" aria-label="Следующее фото">›</button>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div>© 2025 «Калды». База отдыха у озера.</div>
+      <div class="badge-pill">Тёплый отдых у воды</div>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+
+
+<script type="text/javascript">
+(function(k,o,t,e,l){
+  l=document.createElement("script");
+  l.type="text/javascript";
+  l.src="https://bookonline24.ru/widget.js";
+  l.async=!0;
+  l.onload=l.onreadystatechange=function(){e=this.readyState;!o&&(!e||e==="complete")&&(o=1)&&k();};
+  t=document.getElementsByTagName("script")[0]; t.parentNode.insertBefore(l,t);
+})(function(){
+  // Ensure containers without touching original HTML
+  function ensureContainer(id, picker){
+    var el = document.getElementById(id);
+    if (!el){
+      var parent = (typeof picker==='function' ? picker() : null) || document.body;
+      el = document.createElement('div');
+      el.id = id;
+      el.style.minHeight = '280px';
+      parent && parent.appendChild(el);
+    }
+    return el;
+  }
+  // Smoother scroll helper
+  function scrollToEl(el){ try{ el && el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(_){
+    if(el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 24);
+  }}
+
+  HotelWidget.init({
+    hotelId: "642da836-2765-4865-948f-35039fe2e065",
+    version: "2",
+    hooks: {
+      onError: function(e){ console.error("HotelWidget onError", e); },
+      onInit: function(){ console.log("HotelWidget onInit"); },
+      onBooking: function(v){ console.log("HotelWidget onBooking", v); }
+    }
+  });
+
+  var host = ensureContainer('kontur-form', function(){
+    var card = document.querySelector('.hero-card');
+    return card || document.querySelector('.hero') || document.body;
+  });
+  // Replace stub to focus widget
+  window.bookingStub = function(e){ e && e.preventDefault(); scrollToEl(host); };
+  HotelWidget.add({ type: "bookingForm", inline: true, appearance: { container: "kontur-form" } });
+  HotelWidget.add({ type: "showCheckAvailabilityButtonForMobileDevices", appearance: { container: "kontur-form" } });
+
+});
+</script>
+</body>
+</html>

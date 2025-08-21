@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Галерея — Калды</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+
+<header class="header">
+  <a class="brand" href="index.html">
+    <img src="assets/logo.png" alt="Калды — логотип">
+    <div class="title"><span class="ru">Калды</span><span class="subtitle">База отдыха</span></div>
+  </a>
+
+  <!-- КНОПКА-БУРГЕР -->
+  <button class="burger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav">
+    <a href="rooms.html">Домики</a>
+    <a href="services.html">Услуги</a>
+    <a href="gallery.html">Галерея</a>
+    <a href="index.html#about">О нас</a>
+    <a href="contacts.html">Контакты</a>
+    <a class="btn" href="#" onclick="bookingStub(event)">Забронировать</a>
+  </nav>
+</header>
+
+<section class="section">
+  <h2>Фотогалерея</h2>
+  <div class="gallery" id="galleryAuto" data-prefix="assets/gallery/photo-" data-start="1" data-max="500">
+    <!-- статические примеры (дальше подгрузит initAutoGallery из main.js) -->
+    <img src="assets/territory/terr-1.jpg" alt="Фото 1">
+    <img src="assets/rooms/standard-1.jpg" alt="Фото 2">
+    <img src="assets/rooms/cottage-1.jpg" alt="Фото 3">
+    <img src="assets/rooms/forest-1.jpg" alt="Фото 4">
+  </div>
+</section>
+
+<!-- ЕДИНЫЙ лайтбокс (как в деталке) -->
+<div id="lightbox" class="lightbox" style="display:none;">
+  <button class="lightbox-close" aria-label="Закрыть">×</button>
+  <button class="lightbox-prev" aria-label="Предыдущее фото">‹</button>
+  <img src="" alt="" class="lightbox-img">
+  <button class="lightbox-next" aria-label="Следующее фото">›</button>
+</div>
+
+  </div>
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div>© 2025 «Калды». База отдыха у озера.</div>
+      <div class="badge-pill">Тёплый отдых у воды</div>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts/main.js"></script>
+
+</body>
+</html>
