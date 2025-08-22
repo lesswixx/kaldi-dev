@@ -57,7 +57,7 @@ a{color:inherit}
 .badge{display:inline-flex;align-items:center;gap:10px;background:var(--white);border-radius:999px;padding:8px 14px;box-shadow:var(--shadow-1);margin-bottom:12px}
 .badge .dot{width:10px;height:10px;border-radius:50%;background:var(--orange)}
 .hero-copy p{margin:0 0 16px 0;font-size:clamp(16px,2vw,18px);opacity:.9}
-.hero-card{background:var(--white);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-1);display:grid;gap:10px}
+.hero-card{background:var(--white);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-1);display:grid;gap:10px;position:relative;overflow:hidden}
 .hero-card .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .hero-card label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;opacity:.7}
 .hero-card .field{background:#F8F8F8;padding:10px 12px;border-radius:10px}
@@ -129,11 +129,22 @@ form .actions{margin:10px}
 
 /* Weather */
 .weather{
-  position:absolute; right:0; top:-10px;
-  transform: translateY(-100%);
-  background:#fff; border-radius:12px; padding:8px 10px; box-shadow:var(--shadow-1);
-  display:inline-flex; align-items:center; gap:10px;
+  position:relative;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding:16px; border-radius:12px;
+  background: linear-gradient(135deg, rgba(76,183,197,.15), rgba(228,135,42,.10));
+  box-shadow: var(--shadow-1);
+  overflow:hidden;
 }
+.weather:before{
+  content:""; position:absolute; right:-40px; top:-40px; width:180px; height:180px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0));
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float{ 0%,100%{ transform: translateY(0) rotate(0deg);} 50%{ transform: translateY(6px) rotate(2deg);} }
+.weather .w-row{display:flex;gap:12px;align-items:center}
+.weather strong#wTemp{font-size:28px;font-weight:800}
+.weather .w-meta{font-size:13px;opacity:.9}
 .weather .w-row{display:flex;gap:10px;align-items:center}
 .weather .w-temp{font-size:22px;font-weight:800}
 .weather .w-meta{font-size:12px;opacity:.8}
@@ -402,16 +413,9 @@ body.modal-open .burger{ opacity: 0; }   /* можно убрать строку
 @media (max-width: 560px){
   /* вместо абсолютного — обычный поток */
   .weather{
-    position: static;
-    transform: none;
-    right: auto; top: auto;
     width: 100%;
-    margin: -6px 0 12px 0;          /* чуть прижмём к заголовку/кнопке */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border-radius: 12px;
+    margin: -6px 0 12px 0;
+    padding: 12px;
   }
 
   /* внутри — растягиваем и уплотняем */
@@ -441,6 +445,9 @@ body.modal-open .burger{ opacity: 0; }   /* можно убрать строку
   /* карточке бронирования дадим место, если раньше виджет перекрывал её */
   .hero-card{ padding-top: 8px; }
 }
+
+/* Кнопка под действиями в hero */
+.hero-contact-btn{ margin-top:10px; display:inline-block; }
 
 /* сверхузкие экраны — ещё компактнее */
 @media (max-width: 360px){
