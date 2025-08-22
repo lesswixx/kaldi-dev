@@ -561,3 +561,229 @@ body.nav-open .burger .icon-close  { opacity: 1; }
   z-index: 1000;
 }
 body.nav-open .nav-mask { opacity: 1; pointer-events: auto; }
+
+/* ===== Стилизация виджета Контур.Отель ===== */
+
+/* Основные контейнеры виджета */
+#kontur-form,
+#kontur-form-room,
+#kontur-calendar {
+  border-radius: var(--radius) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-1) !important;
+  background: var(--white) !important;
+}
+
+/* Стилизация элементов формы виджета */
+[class*="hotel-widget"] {
+  font-family: "Montserrat", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+}
+
+/* Поля ввода виджета */
+[class*="hotel-widget"] input,
+[class*="hotel-widget"] select,
+[class*="hotel-widget"] button,
+.hotel-widget input,
+.hotel-widget select,
+.hotel-widget button {
+  border-radius: 10px !important;
+  border: 1px solid #e7e0d8 !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+}
+
+/* Кнопки виджета */
+[class*="hotel-widget"] button[type="submit"],
+[class*="hotel-widget"] .btn,
+[class*="hotel-widget"] [class*="button"],
+.hotel-widget button[type="submit"],
+.hotel-widget .btn,
+.hotel-widget [class*="button"] {
+  background: var(--orange) !important;
+  color: var(--white) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 12px 18px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 20px rgba(228, 135, 42, 0.35) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+[class*="hotel-widget"] button[type="submit"]:hover,
+[class*="hotel-widget"] .btn:hover,
+[class*="hotel-widget"] [class*="button"]:hover,
+.hotel-widget button[type="submit"]:hover,
+.hotel-widget .btn:hover,
+.hotel-widget [class*="button"]:hover {
+  filter: brightness(1.04) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Календарь виджета */
+[class*="hotel-widget"] [class*="calendar"],
+[class*="hotel-widget"] [class*="datepicker"],
+.hotel-widget [class*="calendar"],
+.hotel-widget [class*="datepicker"] {
+  border-radius: 12px !important;
+  border: 1px solid #e7e0d8 !important;
+  box-shadow: var(--shadow-1) !important;
+}
+
+/* Активные даты в календаре */
+[class*="hotel-widget"] [class*="calendar"] [class*="active"],
+[class*="hotel-widget"] [class*="calendar"] [class*="selected"],
+.hotel-widget [class*="calendar"] [class*="active"],
+.hotel-widget [class*="calendar"] [class*="selected"] {
+  background: var(--orange) !important;
+  color: var(--white) !important;
+}
+
+/* Доступные даты */
+[class*="hotel-widget"] [class*="calendar"] [class*="available"],
+.hotel-widget [class*="calendar"] [class*="available"] {
+  background: var(--blue) !important;
+  color: var(--white) !important;
+}
+
+/* Компактный размер для hero-card */
+#kontur-form {
+  max-height: 120px !important;
+  overflow: hidden !important;
+}
+
+/* Более компактные поля для главной страницы */
+#kontur-form input,
+#kontur-form select,
+#kontur-form button {
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+  margin: 2px 0 !important;
+}
+
+#kontur-form button[type="submit"] {
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+/* Календарь на странице контактов */
+#kontur-calendar {
+  max-height: 400px !important;
+  overflow: auto !important;
+}
+
+/* Форма на странице номера */
+#kontur-form-room {
+  max-height: 300px !important;
+  overflow: auto !important;
+}
+
+/* Мобильная адаптация виджета */
+@media (max-width: 860px) {
+  #kontur-form,
+  #kontur-form-room,
+  #kontur-calendar {
+    max-height: none !important;
+  }
+  
+  [class*="hotel-widget"] input,
+  [class*="hotel-widget"] select,
+  [class*="hotel-widget"] button,
+  .hotel-widget input,
+  .hotel-widget select,
+  .hotel-widget button {
+    font-size: 16px !important; /* Предотвращает зум на iOS */
+    padding: 12px !important;
+  }
+}
+
+/* Скрытие ненужных элементов виджета */
+[class*="hotel-widget"] [class*="logo"],
+[class*="hotel-widget"] [class*="branding"],
+.hotel-widget [class*="logo"],
+.hotel-widget [class*="branding"] {
+  display: none !important;
+}
+
+/* Адаптация под тему сайта */
+[class*="hotel-widget"] {
+  color: var(--charcoal) !important;
+}
+
+/* Фокус состояние */
+[class*="hotel-widget"] input:focus,
+[class*="hotel-widget"] select:focus,
+.hotel-widget input:focus,
+.hotel-widget select:focus {
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 2px rgba(228, 135, 42, 0.2) !important;
+  outline: none !important;
+}
+
+/* Состояние загрузки виджета */
+#kontur-form:empty::after,
+#kontur-form-room:empty::after,
+#kontur-calendar:empty::after {
+  content: "Загрузка формы бронирования...";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  color: var(--charcoal);
+  opacity: 0.6;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Дополнительная стилизация для конкретных элементов виджета */
+[class*="hotel-widget"] iframe {
+  border-radius: 12px !important;
+  border: 1px solid #e7e0d8 !important;
+}
+
+/* Убираем лишние отступы */
+[class*="hotel-widget"] > div,
+.hotel-widget > div {
+  margin: 0 !important;
+}
+
+/* Стилизация заголовков в виджете */
+[class*="hotel-widget"] h1,
+[class*="hotel-widget"] h2,
+[class*="hotel-widget"] h3,
+[class*="hotel-widget"] h4,
+.hotel-widget h1,
+.hotel-widget h2,
+.hotel-widget h3,
+.hotel-widget h4 {
+  color: var(--charcoal) !important;
+  font-family: "Montserrat", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  margin: 8px 0 !important;
+}
+
+/* Стилизация текста в виджете */
+[class*="hotel-widget"] p,
+[class*="hotel-widget"] span,
+[class*="hotel-widget"] label,
+.hotel-widget p,
+.hotel-widget span,
+.hotel-widget label {
+  color: var(--charcoal) !important;
+  font-family: inherit !important;
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+  #kontur-form {
+    max-height: 140px !important;
+    padding: 6px !important;
+  }
+  
+  #kontur-form input,
+  #kontur-form select,
+  #kontur-form button {
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+}
