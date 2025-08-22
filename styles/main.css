@@ -23,7 +23,7 @@ a{color:inherit}
 
 /* Header */
 .header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:5px}
-.brand{display:flex;align-items:center;gap:25px;text-decoration:none;padding-top: 10px;padding-left: 3px ;}
+.brand{display:none;align-items:center;gap:25px;text-decoration:none;padding-top: 10px;padding-left: 3px ;}
 .brand img{width:44px;height:44px;border-radius:12px;background:var(--white);box-shadow:var(--shadow-1)}
 .brand .title{line-height:1.05;display:grid}
 .brand .title .ru{font-weight:800;font-size:clamp(18px,3.2vw,24px);letter-spacing:.02em}
