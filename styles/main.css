@@ -574,6 +574,15 @@ body.nav-open .nav-mask { opacity: 1; pointer-events: auto; }
   background: transparent;
 }
 
+/* Компактность для hero-card */
+#kontur-form {
+  margin: 8px 0;
+}
+
+#kontur-form > div {
+  padding: 12px !important;
+}
+
 /* Глобальная стилизация всех элементов виджета */
 div[id*="kontur"] *,
 [class*="hotel-widget"] *,
@@ -660,13 +669,35 @@ div[id*="kontur"] [role="button"]:hover,
   transform: translateY(-1px) !important;
 }
 
-/* Компоновка полей в ряд - как на сайте */
+/* Компоновка полей - вертикально для лучшего размещения */
 div[id*="kontur"] .row,
 div[id*="kontur"] > div > div {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 10px !important;
-  margin: 10px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin: 8px 0 !important;
+}
+
+/* Для главной страницы - особенно компактно */
+#kontur-form .row,
+#kontur-form > div > div,
+#kontur-form div {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  margin: 6px 0 !important;
+}
+
+#kontur-form input,
+#kontur-form select {
+  margin: 2px 0 !important;
+  padding: 8px 10px !important;
+  font-size: 13px !important;
+}
+
+#kontur-form label {
+  font-size: 11px !important;
+  margin-bottom: 2px !important;
 }
 
 /* Календарь */
@@ -736,16 +767,18 @@ div[id*="kontur"] select:focus,
 
 /* Мобильная адаптация */
 @media (max-width: 860px) {
-  div[id*="kontur"] .row,
-  div[id*="kontur"] > div > div {
-    grid-template-columns: 1fr !important;
-  }
-  
   div[id*="kontur"] input,
   div[id*="kontur"] select,
   [class*="hotel-widget"] input,
   [class*="hotel-widget"] select {
     font-size: 16px !important; /* Предотвращает зум на iOS */
     padding: 12px !important;
+  }
+  
+  /* На мобильных оставляем больше места */
+  div[id*="kontur"] .row,
+  div[id*="kontur"] > div > div {
+    gap: 10px !important;
+    margin: 10px 0 !important;
   }
 }
