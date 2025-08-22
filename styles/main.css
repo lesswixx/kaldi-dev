@@ -564,164 +564,149 @@ body.nav-open .nav-mask { opacity: 1; pointer-events: auto; }
 
 /* ===== Стилизация виджета Контур.Отель ===== */
 
-/* Основные контейнеры виджета */
+/* Основные контейнеры виджета - убираем принудительную стилизацию */
 #kontur-form,
 #kontur-form-room,
 #kontur-calendar {
-  border-radius: var(--radius) !important;
-  overflow: hidden !important;
-  box-shadow: var(--shadow-1) !important;
-  background: var(--white) !important;
+  margin: 10px 0;
+  border-radius: var(--radius);
+  overflow: visible;
+  background: transparent;
 }
 
-/* Стилизация элементов формы виджета */
-[class*="hotel-widget"] {
+/* Глобальная стилизация всех элементов виджета */
+div[id*="kontur"] *,
+[class*="hotel-widget"] *,
+.hotel-widget * {
   font-family: "Montserrat", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
 }
 
-/* Поля ввода виджета */
-[class*="hotel-widget"] input,
-[class*="hotel-widget"] select,
-[class*="hotel-widget"] button,
-.hotel-widget input,
-.hotel-widget select,
-.hotel-widget button {
-  border-radius: 10px !important;
-  border: 1px solid #e7e0d8 !important;
-  font-family: inherit !important;
-  font-size: 14px !important;
+/* Контейнеры виджета */
+div[id*="kontur"] > div,
+[class*="hotel-widget"],
+.hotel-widget {
+  background: var(--white) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-1) !important;
+  padding: 18px !important;
+  border: none !important;
 }
 
-/* Кнопки виджета */
-[class*="hotel-widget"] button[type="submit"],
-[class*="hotel-widget"] .btn,
-[class*="hotel-widget"] [class*="button"],
-.hotel-widget button[type="submit"],
-.hotel-widget .btn,
-.hotel-widget [class*="button"] {
+/* Поля ввода - стилизуем как на сайте */
+div[id*="kontur"] input,
+div[id*="kontur"] select,
+[class*="hotel-widget"] input,
+[class*="hotel-widget"] select,
+.hotel-widget input,
+.hotel-widget select {
+  background: #F8F8F8 !important;
+  border: 1px solid #e7e0d8 !important;
+  border-radius: 10px !important;
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  color: var(--charcoal) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 4px 0 !important;
+}
+
+/* Лейблы полей - как на сайте */
+div[id*="kontur"] label,
+[class*="hotel-widget"] label,
+.hotel-widget label {
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  opacity: 0.7 !important;
+  color: var(--charcoal) !important;
+  margin-bottom: 4px !important;
+  display: block !important;
+  font-weight: 600 !important;
+}
+
+/* Кнопки - точно как на сайте */
+div[id*="kontur"] button,
+div[id*="kontur"] [role="button"],
+div[id*="kontur"] input[type="submit"],
+[class*="hotel-widget"] button,
+[class*="hotel-widget"] [role="button"],
+[class*="hotel-widget"] input[type="submit"],
+.hotel-widget button,
+.hotel-widget [role="button"],
+.hotel-widget input[type="submit"] {
   background: var(--orange) !important;
   color: var(--white) !important;
   border: none !important;
   border-radius: 12px !important;
   padding: 12px 18px !important;
   font-weight: 700 !important;
+  font-size: 14px !important;
   box-shadow: 0 6px 20px rgba(228, 135, 42, 0.35) !important;
   transition: all 0.2s ease !important;
   cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  text-align: center !important;
+  min-width: 120px !important;
 }
 
-[class*="hotel-widget"] button[type="submit"]:hover,
-[class*="hotel-widget"] .btn:hover,
-[class*="hotel-widget"] [class*="button"]:hover,
-.hotel-widget button[type="submit"]:hover,
-.hotel-widget .btn:hover,
-.hotel-widget [class*="button"]:hover {
+div[id*="kontur"] button:hover,
+div[id*="kontur"] [role="button"]:hover,
+[class*="hotel-widget"] button:hover,
+[class*="hotel-widget"] [role="button"]:hover,
+.hotel-widget button:hover,
+.hotel-widget [role="button"]:hover {
   filter: brightness(1.04) !important;
   transform: translateY(-1px) !important;
 }
 
-/* Календарь виджета */
+/* Компоновка полей в ряд - как на сайте */
+div[id*="kontur"] .row,
+div[id*="kontur"] > div > div {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  margin: 10px 0 !important;
+}
+
+/* Календарь */
+div[id*="kontur"] [class*="calendar"],
+div[id*="kontur"] [class*="datepicker"],
 [class*="hotel-widget"] [class*="calendar"],
-[class*="hotel-widget"] [class*="datepicker"],
-.hotel-widget [class*="calendar"],
-.hotel-widget [class*="datepicker"] {
+[class*="hotel-widget"] [class*="datepicker"] {
+  background: var(--white) !important;
   border-radius: 12px !important;
   border: 1px solid #e7e0d8 !important;
   box-shadow: var(--shadow-1) !important;
 }
 
-/* Активные даты в календаре */
-[class*="hotel-widget"] [class*="calendar"] [class*="active"],
-[class*="hotel-widget"] [class*="calendar"] [class*="selected"],
-.hotel-widget [class*="calendar"] [class*="active"],
-.hotel-widget [class*="calendar"] [class*="selected"] {
+/* Активные даты */
+div[id*="kontur"] [class*="selected"],
+div[id*="kontur"] [class*="active"],
+[class*="hotel-widget"] [class*="selected"],
+[class*="hotel-widget"] [class*="active"] {
   background: var(--orange) !important;
   color: var(--white) !important;
 }
 
 /* Доступные даты */
-[class*="hotel-widget"] [class*="calendar"] [class*="available"],
-.hotel-widget [class*="calendar"] [class*="available"] {
+div[id*="kontur"] [class*="available"],
+[class*="hotel-widget"] [class*="available"] {
   background: var(--blue) !important;
   color: var(--white) !important;
 }
 
-/* Компактный размер для hero-card */
-#kontur-form {
-  max-height: 120px !important;
-  overflow: hidden !important;
-}
-
-/* Более компактные поля для главной страницы */
-#kontur-form input,
-#kontur-form select,
-#kontur-form button {
-  padding: 8px 12px !important;
-  font-size: 13px !important;
-  margin: 2px 0 !important;
-}
-
-#kontur-form button[type="submit"] {
-  padding: 10px 16px !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-}
-
-/* Календарь на странице контактов */
-#kontur-calendar {
-  max-height: 400px !important;
-  overflow: auto !important;
-}
-
-/* Форма на странице номера */
-#kontur-form-room {
-  max-height: 300px !important;
-  overflow: auto !important;
-}
-
-/* Мобильная адаптация виджета */
-@media (max-width: 860px) {
-  #kontur-form,
-  #kontur-form-room,
-  #kontur-calendar {
-    max-height: none !important;
-  }
-  
-  [class*="hotel-widget"] input,
-  [class*="hotel-widget"] select,
-  [class*="hotel-widget"] button,
-  .hotel-widget input,
-  .hotel-widget select,
-  .hotel-widget button {
-    font-size: 16px !important; /* Предотвращает зум на iOS */
-    padding: 12px !important;
-  }
-}
-
-/* Скрытие ненужных элементов виджета */
+/* Скрытие логотипов */
+div[id*="kontur"] [class*="logo"],
+div[id*="kontur"] [class*="brand"],
+div[id*="kontur"] [class*="powered"],
 [class*="hotel-widget"] [class*="logo"],
-[class*="hotel-widget"] [class*="branding"],
-.hotel-widget [class*="logo"],
-.hotel-widget [class*="branding"] {
+[class*="hotel-widget"] [class*="brand"],
+[class*="hotel-widget"] [class*="powered"] {
   display: none !important;
 }
 
-/* Адаптация под тему сайта */
-[class*="hotel-widget"] {
-  color: var(--charcoal) !important;
-}
-
-/* Фокус состояние */
-[class*="hotel-widget"] input:focus,
-[class*="hotel-widget"] select:focus,
-.hotel-widget input:focus,
-.hotel-widget select:focus {
-  border-color: var(--orange) !important;
-  box-shadow: 0 0 0 2px rgba(228, 135, 42, 0.2) !important;
-  outline: none !important;
-}
-
-/* Состояние загрузки виджета */
+/* Состояние загрузки */
 #kontur-form:empty::after,
 #kontur-form-room:empty::after,
 #kontur-calendar:empty::after {
@@ -729,61 +714,38 @@ body.nav-open .nav-mask { opacity: 1; pointer-events: auto; }
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
+  height: 80px;
   color: var(--charcoal);
   opacity: 0.6;
   font-size: 14px;
   font-weight: 600;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
 }
 
-/* Дополнительная стилизация для конкретных элементов виджета */
-[class*="hotel-widget"] iframe {
-  border-radius: 12px !important;
-  border: 1px solid #e7e0d8 !important;
+/* Фокус состояние */
+div[id*="kontur"] input:focus,
+div[id*="kontur"] select:focus,
+[class*="hotel-widget"] input:focus,
+[class*="hotel-widget"] select:focus {
+  border-color: var(--orange) !important;
+  box-shadow: 0 0 0 2px rgba(228, 135, 42, 0.2) !important;
+  outline: none !important;
 }
 
-/* Убираем лишние отступы */
-[class*="hotel-widget"] > div,
-.hotel-widget > div {
-  margin: 0 !important;
-}
-
-/* Стилизация заголовков в виджете */
-[class*="hotel-widget"] h1,
-[class*="hotel-widget"] h2,
-[class*="hotel-widget"] h3,
-[class*="hotel-widget"] h4,
-.hotel-widget h1,
-.hotel-widget h2,
-.hotel-widget h3,
-.hotel-widget h4 {
-  color: var(--charcoal) !important;
-  font-family: "Montserrat", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
-  margin: 8px 0 !important;
-}
-
-/* Стилизация текста в виджете */
-[class*="hotel-widget"] p,
-[class*="hotel-widget"] span,
-[class*="hotel-widget"] label,
-.hotel-widget p,
-.hotel-widget span,
-.hotel-widget label {
-  color: var(--charcoal) !important;
-  font-family: inherit !important;
-}
-
-/* Адаптивность для очень маленьких экранов */
-@media (max-width: 480px) {
-  #kontur-form {
-    max-height: 140px !important;
-    padding: 6px !important;
+/* Мобильная адаптация */
+@media (max-width: 860px) {
+  div[id*="kontur"] .row,
+  div[id*="kontur"] > div > div {
+    grid-template-columns: 1fr !important;
   }
   
-  #kontur-form input,
-  #kontur-form select,
-  #kontur-form button {
-    font-size: 14px !important;
-    padding: 10px !important;
+  div[id*="kontur"] input,
+  div[id*="kontur"] select,
+  [class*="hotel-widget"] input,
+  [class*="hotel-widget"] select {
+    font-size: 16px !important; /* Предотвращает зум на iOS */
+    padding: 12px !important;
   }
 }
