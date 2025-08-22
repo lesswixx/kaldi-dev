@@ -583,157 +583,33 @@ body.nav-open .nav-mask { opacity: 1; pointer-events: auto; }
   padding: 12px !important;
 }
 
-/* Глобальная стилизация всех элементов виджета */
-div[id*="kontur"] *,
-[class*="hotel-widget"] *,
-.hotel-widget * {
+/* Убираем все принудительные стили от виджета */
+#kontur-form *,
+#kontur-form-room *,
+#kontur-calendar * {
   font-family: "Montserrat", "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
 }
 
-/* Контейнеры виджета */
-div[id*="kontur"] > div,
-[class*="hotel-widget"],
-.hotel-widget {
-  background: var(--white) !important;
-  border-radius: var(--radius) !important;
-  box-shadow: var(--shadow-1) !important;
-  padding: 18px !important;
-  border: none !important;
-}
 
-/* Поля ввода - стилизуем как на сайте */
-div[id*="kontur"] input,
-div[id*="kontur"] select,
-[class*="hotel-widget"] input,
-[class*="hotel-widget"] select,
-.hotel-widget input,
-.hotel-widget select {
-  background: #F8F8F8 !important;
-  border: 1px solid #e7e0d8 !important;
-  border-radius: 10px !important;
-  padding: 10px 12px !important;
-  font-size: 14px !important;
-  color: var(--charcoal) !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  margin: 4px 0 !important;
-}
 
-/* Лейблы полей - как на сайте */
-div[id*="kontur"] label,
-[class*="hotel-widget"] label,
-.hotel-widget label {
-  font-size: 12px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  opacity: 0.7 !important;
-  color: var(--charcoal) !important;
-  margin-bottom: 4px !important;
-  display: block !important;
-  font-weight: 600 !important;
-}
 
-/* Кнопки - точно как на сайте */
-div[id*="kontur"] button,
-div[id*="kontur"] [role="button"],
-div[id*="kontur"] input[type="submit"],
-[class*="hotel-widget"] button,
-[class*="hotel-widget"] [role="button"],
-[class*="hotel-widget"] input[type="submit"],
-.hotel-widget button,
-.hotel-widget [role="button"],
-.hotel-widget input[type="submit"] {
-  background: var(--orange) !important;
-  color: var(--white) !important;
-  border: none !important;
-  border-radius: 12px !important;
-  padding: 12px 18px !important;
-  font-weight: 700 !important;
-  font-size: 14px !important;
-  box-shadow: 0 6px 20px rgba(228, 135, 42, 0.35) !important;
-  transition: all 0.2s ease !important;
-  cursor: pointer !important;
-  text-decoration: none !important;
-  display: inline-block !important;
-  text-align: center !important;
-  min-width: 120px !important;
-}
 
-div[id*="kontur"] button:hover,
-div[id*="kontur"] [role="button"]:hover,
-[class*="hotel-widget"] button:hover,
-[class*="hotel-widget"] [role="button"]:hover,
-.hotel-widget button:hover,
-.hotel-widget [role="button"]:hover {
-  filter: brightness(1.04) !important;
-  transform: translateY(-1px) !important;
-}
 
-/* Компоновка полей - вертикально для лучшего размещения */
-div[id*="kontur"] .row,
-div[id*="kontur"] > div > div {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  margin: 8px 0 !important;
-}
 
-/* Для главной страницы - особенно компактно */
-#kontur-form .row,
-#kontur-form > div > div,
-#kontur-form div {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 6px !important;
-  margin: 6px 0 !important;
-}
 
-#kontur-form input,
-#kontur-form select {
-  margin: 2px 0 !important;
-  padding: 8px 10px !important;
-  font-size: 13px !important;
-}
 
-#kontur-form label {
-  font-size: 11px !important;
-  margin-bottom: 2px !important;
-}
 
-/* Календарь */
-div[id*="kontur"] [class*="calendar"],
-div[id*="kontur"] [class*="datepicker"],
-[class*="hotel-widget"] [class*="calendar"],
-[class*="hotel-widget"] [class*="datepicker"] {
-  background: var(--white) !important;
-  border-radius: 12px !important;
-  border: 1px solid #e7e0d8 !important;
-  box-shadow: var(--shadow-1) !important;
-}
 
-/* Активные даты */
-div[id*="kontur"] [class*="selected"],
-div[id*="kontur"] [class*="active"],
-[class*="hotel-widget"] [class*="selected"],
-[class*="hotel-widget"] [class*="active"] {
-  background: var(--orange) !important;
-  color: var(--white) !important;
-}
-
-/* Доступные даты */
-div[id*="kontur"] [class*="available"],
-[class*="hotel-widget"] [class*="available"] {
-  background: var(--blue) !important;
-  color: var(--white) !important;
-}
-
-/* Скрытие логотипов */
-div[id*="kontur"] [class*="logo"],
-div[id*="kontur"] [class*="brand"],
-div[id*="kontur"] [class*="powered"],
-[class*="hotel-widget"] [class*="logo"],
-[class*="hotel-widget"] [class*="brand"],
-[class*="hotel-widget"] [class*="powered"] {
+/* Скрываем логотипы и брендинг */
+#kontur-form [class*="logo"],
+#kontur-form [class*="brand"],
+#kontur-form [class*="powered"],
+#kontur-form-room [class*="logo"],
+#kontur-form-room [class*="brand"],
+#kontur-form-room [class*="powered"],
+#kontur-calendar [class*="logo"],
+#kontur-calendar [class*="brand"],
+#kontur-calendar [class*="powered"] {
   display: none !important;
 }
 
@@ -741,44 +617,13 @@ div[id*="kontur"] [class*="powered"],
 #kontur-form:empty::after,
 #kontur-form-room:empty::after,
 #kontur-calendar:empty::after {
-  content: "Загрузка формы бронирования...";
+  content: "Загрузка...";
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px;
+  height: 60px;
   color: var(--charcoal);
   opacity: 0.6;
   font-size: 14px;
   font-weight: 600;
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-1);
-}
-
-/* Фокус состояние */
-div[id*="kontur"] input:focus,
-div[id*="kontur"] select:focus,
-[class*="hotel-widget"] input:focus,
-[class*="hotel-widget"] select:focus {
-  border-color: var(--orange) !important;
-  box-shadow: 0 0 0 2px rgba(228, 135, 42, 0.2) !important;
-  outline: none !important;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 860px) {
-  div[id*="kontur"] input,
-  div[id*="kontur"] select,
-  [class*="hotel-widget"] input,
-  [class*="hotel-widget"] select {
-    font-size: 16px !important; /* Предотвращает зум на iOS */
-    padding: 12px !important;
-  }
-  
-  /* На мобильных оставляем больше места */
-  div[id*="kontur"] .row,
-  div[id*="kontur"] > div > div {
-    gap: 10px !important;
-    margin: 10px 0 !important;
-  }
 }
