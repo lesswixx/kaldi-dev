@@ -564,7 +564,7 @@ body.nav-open .nav-mask { opacity: 1; pointer-events: auto; }
 
 /* ===== Стилизация виджета Контур.Отель ===== */
 
-/* Основные контейнеры виджета - убираем принудительную стилизацию */
+/* Основные контейнеры виджета */
 #kontur-form,
 #kontur-form-room,
 #kontur-calendar {
@@ -574,13 +574,13 @@ body.nav-open .nav-mask { opacity: 1; pointer-events: auto; }
   background: transparent;
 }
 
-/* Компактность для hero-card */
+/* Виджет в отдельной секции - больше места */
 #kontur-form {
-  margin: 8px 0;
-}
-
-#kontur-form > div {
-  padding: 12px !important;
+  margin: 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  padding: 24px;
 }
 
 /* Убираем все принудительные стили от виджета */
